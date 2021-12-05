@@ -13,14 +13,15 @@ class RandomChar extends Component {
   }
 
   state = {
-    name: null,
-    description: null,
-    thumbnails: null,
-    homepage: null,
-    wiki: null
+    character: {}
   }
 
   marvelService = new MarvelService();
+
+  onCharacterLoaded = (character) => {
+    this.setState({character});
+    console.log(character)
+  }
 
   updateChar = () => {
     const minValue = 1011000;
@@ -30,19 +31,11 @@ class RandomChar extends Component {
 
     this.marvelService
       .getCharacter(id)
-      .then(res => {
-        this.setState({
-          name: res.data.results[0].name,
-          description: res.data.results[0].description,
-          thumbnails: res.data.results[0].thumbnail.path + '.' + res.data.results[0].thumbnail.extension,
-          homepage: res.data.results[0].urls[0].url,
-          wiki: res.data.results[0].urls[1].url
-        })
-      })
+        .then(this.onCharacterLoaded)
   }
 
   render() {
-    const {name, description, thumbnails, homepage, wiki} = this.state;
+    const {character: {name, description, thumbnails, homepage, wiki}} = this.state;
 
     return (
       <div className="randomchar">
