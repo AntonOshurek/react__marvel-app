@@ -3,9 +3,13 @@
 .characters-content {
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 650px 425px;
+  grid-template-columns: 1fr 400px;
   column-gap: 25px;
   align-items: start;
+
+  @media (max-width: $tablet-width) {
+    grid-template-columns: 1fr min-content;
+  }
 }
 
 .characters {
@@ -17,13 +21,19 @@
 
 .characters__list {
   display: grid;
-  grid-template-columns: repeat(3, 200px);
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
   row-gap: 30px;
+
+  @media (max-width: $tablet-width) {
+    max-height: 100%;
+    overflow: auto;
+    grid-template-columns: repeat(2, 200px);
+  }
 }
 
 .characters__item {
-  width: 200px;
+  max-width: 200px;
   height: 318px;
   background-color: $dark;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, .25);
