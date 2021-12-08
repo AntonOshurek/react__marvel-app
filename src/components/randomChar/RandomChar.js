@@ -37,25 +37,26 @@ class RandomChar extends Component {
     const {character: {name, description, thumbnails, homepage, wiki}} = this.state;
 
     return (
-      <div className="randomchar">
-        <div className="randomchar__block">
-          <img src={thumbnails} alt="Random character" className="randomchar__img"/>
+      <section className="randomchar">
+        <h2 className="visually-hidden">random character for you!</h2>
+        <article className="randomchar__block">
+          <img className="randomchar__img" width="180" height="180" src={thumbnails} alt={'Random character - ' + name}/>
           <div className="randomchar__info">
             <p className="randomchar__name">{name}</p>
             <p className="randomchar__descr">
-              {description}
+              {description ? description : 'sory! We dont have description for this character'}
             </p>
-            <div className="randomchar__btns">
-              <a href={homepage} className="button button__main">
+            <div className="randomchar__links">
+              <a className="button button__main" href={homepage}>
                 <div className="inner">homepage</div>
               </a>
-              <a href={wiki} className="button button__secondary">
+              <a className="button button__secondary" href={wiki}>
                 <div className="inner">Wiki</div>
               </a>
             </div>
           </div>
-        </div>
-        <div className="randomchar__static">
+        </article>
+        <article className="randomchar__static">
           <p className="randomchar__title">
             Random character for today!<br/>
             Do you want to get to know him better?
@@ -63,12 +64,11 @@ class RandomChar extends Component {
           <p className="randomchar__title">
             Or choose another one
           </p>
-          <button className="button button__main">
+          <button className="randomchar__try-button button button__main" type="button">
             <div className="inner">try it</div>
           </button>
-          <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
-        </div>
-      </div>
+        </article>
+      </section>
     )
   }
 
