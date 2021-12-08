@@ -1,31 +1,56 @@
 @import '../../style/variables.scss';
 
-.app {
-    &__header {
-        display: flex;
-        justify-content: space-between;
-    }
-    &__title {
-        font-weight: bold;
-        font-size: 28px;
-        line-height: 37px;
-        span {
-            color: $main-color;
-        }
-    }
-    &__menu {
-        ul {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 32px;
-            li {
-                margin: 0 8px;
-                a:hover {
-                    color: $main-color;
-                }
-            }
-        }
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: $mobile-width) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content;
+    align-content: center;
+    justify-items: center;
+    grid-row-gap: 20px;
+  }
+}
+
+.header-title {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+}
+
+.header-title__link {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+    text-decoration: underline;
+  }
+}
+
+.header-title__custom-text {
+  color: $main-color;
+}
+
+.menu__list {
+  height: 100%;
+  width: min-content;
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  grid-column-gap: 8px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.menu__link {
+  &:hover,
+  &:focus {
+    color: $main-color;
+  }
 }
