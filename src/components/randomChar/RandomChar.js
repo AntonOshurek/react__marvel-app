@@ -3,7 +3,6 @@ import { Component } from 'react';
 import MarvelService from '../../services/MarvelService'
 
 import './randomChar.scss';
-import mjolnir from '../../resources/img/mjolnir.png';
 
 class RandomChar extends Component {
 
