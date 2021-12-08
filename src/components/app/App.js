@@ -9,7 +9,7 @@ const App = () => {
       <AppHeader/>
       <main className="main">
         <RandomChar/>
-        <div className="char__content">
+        <div className="characters-content">
           <CharList/>
           <CharInfo/>
         </div>
