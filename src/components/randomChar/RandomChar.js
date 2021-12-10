@@ -14,6 +14,8 @@ class RandomChar extends Component {
     error: false
   }
 
+  marvelService = new MarvelService();
+
   componentDidMount() {
     this.updateChar();
     //this.timerId = setInterval(this.updateChar, 3000);
@@ -23,11 +25,15 @@ class RandomChar extends Component {
   //   clearInterval(this.timerId);
   // }
 
-  marvelService = new MarvelService();
-
   onCharacterLoaded = (character) => {
     this.setState({character, loading: false});
   }
+
+  onCharLoading = () => {
+    this.setState({
+        loading: true
+    })
+}
 
   onError = () => {
     this.setState({loading: false, error: true});
@@ -38,7 +44,7 @@ class RandomChar extends Component {
     const maxValue = 1011400;
 
     const id = Math.floor(Math.random() * (maxValue - minValue) + minValue);
-
+    this.onCharLoading();
     this.marvelService
       .getCharacter(id)
         .then(this.onCharacterLoaded)
@@ -67,7 +73,7 @@ class RandomChar extends Component {
           <p className="randomchar__title">
             Or choose another one
           </p>
-          <button className="randomchar__try-button button button__main" type="button">
+          <button onClick={this.updateChar} className="randomchar__try-button button button__main" type="button">
             <div className="inner">try it</div>
           </button>
         </article>
