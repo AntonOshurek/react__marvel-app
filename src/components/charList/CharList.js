@@ -37,14 +37,14 @@ class CharList extends Component {
   }
 
   renderItems(arr) {
-    const items =  arr.map((item, id) => {
+    const items =  arr.map((item) => {
       let imgStyle = {'objectFit' : 'cover'};
       if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
         imgStyle = {'objectFit' : 'unset'};
       }
 
       return (
-        <li className="characters__item" key={id}>
+        <li className="characters__item" key={item.id}>
           <img className="characters__image" width="200" height="200" src={item.thumbnails} alt={item.name} style={imgStyle}/>
           <h3 className="characters__name">{item.name}</h3>
         </li>
