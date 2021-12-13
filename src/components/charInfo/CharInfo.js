@@ -1,23 +1,99 @@
-import './charInfo.scss';
-import thor from '../../resources/img/thor.jpeg';
+import { Component } from 'react/cjs/react.production.min';
 
-const CharInfo = () => {
-  return (
-    <article className="character-info">
+import MarvelService from '../../services/MarvelService';
+import Spinner from '../spiner/spiner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
+import Skeleton from '../skeleton/Skeleton';
+
+import './charInfo.scss';
+
+class CharInfo extends Component {
+
+  state = {
+    character: null,
+    loading: false,
+    error: false
+  }
+
+  marvelService = new MarvelService();
+
+  componenDidMount() {
+    this.updateCharacter();
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.charId !== prevProps.charId) {
+      this.updateCharacter();
+    }
+  }
+
+  updateCharacter = () => {
+    const {charId} = this.props;
+    if(!charId) {
+      return;
+    }
+
+    this.onCharLoading();
+
+    this.marvelService.getCharacter(charId)
+      .then(this.onCharacterLoaded)
+      .catch(this.onError)
+  }
+
+  onCharacterLoaded = (character) => {
+    this.setState({character, loading: false});
+  }
+
+  onCharLoading = () => {
+    this.setState({
+      loading: true
+    })
+  }
+
+  onError = () => {
+    this.setState({loading: false, error: true});
+  }
+
+  render() {
+
+    const {character, loading, error} = this.state;
+
+    const skeleton = character || loading || error ? null : <Skeleton/>;
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spiner = loading ? <Spinner/> : null;
+    const content = !(loading || error || !character) ? <View character={character}/> : null;
+
+    return (
+      <article className="character-info">
+        {skeleton}
+        {errorMessage}
+        {spiner}
+        {content}
+      </article>
+    )
+  }
+}
+
+const View = ({character}) => {
+
+  const {name, description, thumbnails, homepage, wiki} = character;
+
+  return(
+    <>
       <div className="character-info__basics">
-        <img className="character-info__image" width="150" height="150" src={thor} alt="abyss"/>
+        <img className="character-info__image" width="150" height="150" src={thumbnails} alt={name}/>
         <div className="character-info__main">
-          <h2 className="character-info__name">thor</h2>
-          <a className="button button__main" href="#">
+          <h2 className="character-info__name">{name}</h2>
+          <a className="button button__main" href={homepage}>
             <div className="inner">homepage</div>
           </a>
-          <a className="button button__secondary" href="#">
+          <a className="button button__secondary" href={wiki}>
             <div className="inner">Wiki</div>
           </a>
         </div>
       </div>
       <p className="character-info__description">
-        In Norse mythology, Loki is a god or jötunn (or both). Loki is the son of Fárbauti and Laufey, and the brother of Helblindi and Býleistr. By the jötunn Angrboða, Loki is the father of Hel, the wolf Fenrir, and the world serpent Jörmungandr. By Sigyn, Loki is the father of Nari and/or Narfi and with the stallion Svaðilfari as the father, Loki gave birth—in the form of a mare—to the eight-legged horse Sleipnir. In addition, Loki is referred to as the father of Váli in the Prose Edda.
+       {description}
       </p>
       <p className="character-info__comics">Comics:</p>
       <ul className="character-info__comics-list">
@@ -52,7 +128,7 @@ const CharInfo = () => {
           <p>Avengers (1996) #1</p>
         </li>
       </ul>
-    </article>
+    </>
   )
 }
 
