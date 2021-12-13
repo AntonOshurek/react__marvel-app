@@ -5,7 +5,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 
 import './charList.scss';
-//import abyss from '../../resources/img/abyss.jpg';
 
 class CharList extends Component {
 
@@ -45,18 +44,19 @@ class CharList extends Component {
       }
 
       return (
-        <li className="characters__item" key={item.id}>
-          <img className="characters__image" width="200" height="200" src={item.thumbnail} alt={item.name} style={imgStyle}/>
+        <li className="characters__item" key={item.id}
+        onClick={() => this.props.onCharacterSelected(item.id)}>
+          <img className="characters__image" width="200" height="200" src={item.thumbnails} alt={item.name} style={imgStyle}/>
           <h3 className="characters__name">{item.name}</h3>
         </li>
       )
     });
     return (
-        <ul className="characters__list">
-            {items}
-        </ul>
+      <ul className="characters__list">
+        {items}
+      </ul>
     )
-}
+  }
 
   render() {
 
