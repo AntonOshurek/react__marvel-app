@@ -78,10 +78,18 @@ const View = ({character}) => {
 
   const {name, description, thumbnails, homepage, wiki, comics} = character;
 
+  let imgStyle = {'objectFit' : 'cover'};
+  if (thumbnails === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+    imgStyle = {'objectFit' : 'contain'};
+  }
+
   return(
     <>
       <div className="character-info__basics">
-        <img className="character-info__image" width="150" height="150" src={thumbnails} alt={name}/>
+        <img className="character-info__image"
+          width="150" height="150"
+          src={thumbnails} alt={name}
+          style={imgStyle}/>
         <div className="character-info__main">
           <h2 className="character-info__name">{name}</h2>
           <a className="button button__main" href={homepage}>
@@ -97,8 +105,11 @@ const View = ({character}) => {
       </p>
       <p className="character-info__comics">Comics:</p>
       <ul className="character-info__comics-list">
+        {comics.length > 0 ? null : 'There is no comics with this character'}
         {
           comics.map((item, id) => {
+            // eslint-disable-next-line array-callback-return
+            if (id > 9) return;
             return(
               <li key={id} className="character-info__comics-item">
                 <p>{item.name}</p>
