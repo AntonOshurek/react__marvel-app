@@ -76,7 +76,7 @@ class CharInfo extends Component {
 
 const View = ({character}) => {
 
-  const {name, description, thumbnails, homepage, wiki} = character;
+  const {name, description, thumbnails, homepage, wiki, comics} = character;
 
   return(
     <>
@@ -97,36 +97,15 @@ const View = ({character}) => {
       </p>
       <p className="character-info__comics">Comics:</p>
       <ul className="character-info__comics-list">
-        <li className="character-info__comics-item">
-          <p>All-Winners Squad: Band of Heroes (2011) #3</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Alpha Flight (1983) #50</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Amazing Spider-Man (1999) #503</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Amazing Spider-Man (1999) #504</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>AMAZING SPIDER-MAN VOL. 7: BOOK OF EZEKIEL TPB (Trade Paperback)</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Amazing-Spider-Man: Worldwide Vol. 8 (Trade Paperback)</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Asgardians Of The Galaxy Vol. 2: War Of The Realms (Trade Paperback)</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Vengeance (2011) #4</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Avengers (1963) #1</p>
-        </li>
-        <li className="character-info__comics-item">
-          <p>Avengers (1996) #1</p>
-        </li>
+        {
+          comics.map((item, id) => {
+            return(
+              <li key={id} className="character-info__comics-item">
+                <p>{item.name}</p>
+              </li>
+            )
+          })
+        }
       </ul>
     </>
   )
