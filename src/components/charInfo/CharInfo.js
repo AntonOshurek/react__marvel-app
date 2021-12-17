@@ -37,7 +37,9 @@ class CharInfo extends Component {
 
     this.marvelService.getCharacter(charId)
       .then(this.onCharacterLoaded)
-      .catch(this.onError)
+      .catch(this.onError);
+
+    // this.foo.bar = 0; // special error
   }
 
   onCharacterLoaded = (character) => {
