@@ -1,4 +1,5 @@
 import { Component } from 'react/cjs/react.production.min';
+import PropTypes from 'prop-types';
 
 import Spinner from '../spiner/spiner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -72,7 +73,7 @@ class CharList extends Component {
 
       return (
         <li className="characters__item" key={item.id}
-        onClick={() => this.props.onCharacterSelected(item.id)}>
+          onClick={() => this.props.onCharacterSelected(item.id)}>
           <img className="characters__image" width="200" height="200" src={item.thumbnails} alt={item.name} style={imgStyle}/>
           <h3 className="characters__name">{item.name}</h3>
         </li>
@@ -110,6 +111,10 @@ class CharList extends Component {
       </section>
     )
   }
+}
+
+CharList.propTypes = {
+  onCharacterSelected: PropTypes.func.isRequired,
 }
 
 export default CharList;
