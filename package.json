@@ -13,7 +13,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
-  "homepage": "https://AntonOshurek.github.io/react__marvel-app",
+  "homepage": "https://antonoshurek.github.io/react__marvel-app/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
