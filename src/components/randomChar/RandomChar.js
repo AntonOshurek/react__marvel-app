@@ -54,7 +54,7 @@ class RandomChar extends Component {
   render() {
     const {character, loading, error} = this.state;
     const errorMessage = error ? <ErrorMessage/> : null;
-    const spiner = loading ? <Spinner/> : null;
+    // const spiner = loading ? <Spinner/> : null;
     const content = !(loading || error) ? <View character={character}/> : null;
 
     return (
@@ -62,7 +62,7 @@ class RandomChar extends Component {
         <h2 className="visually-hidden">random character for you!</h2>
 
         {errorMessage}
-        {spiner}
+        {/* {spiner} */}
         {content}
 
         <article className="randomchar__static">
@@ -85,10 +85,12 @@ class RandomChar extends Component {
 
 const View = ({character}) => {
   const {name, description, thumbnails, homepage, wiki} = character;
+  const {loading} = this.state;
+  const spiner = loading ? <Spinner/> : null;
 
   let imgStyle = {'objectFit' : 'cover'};
   if (thumbnails === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
-      imgStyle = {'objectFit' : 'contain'};
+    imgStyle = {'objectFit' : 'contain'};
   }
 
   return (
@@ -110,6 +112,10 @@ const View = ({character}) => {
       </div>
     </article>
   )
+}
+
+const characterImage = () => {
+
 }
 
 export default RandomChar;
