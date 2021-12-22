@@ -13,7 +13,7 @@ class CharInfo extends Component {
   state = {
     character: null,
     loading: false,
-    error: false
+    error: false,
   }
 
   marvelService = new MarvelService();
@@ -67,7 +67,7 @@ class CharInfo extends Component {
     const content = !(loading || error || !character) ? <View character={character}/> : null;
 
     return (
-      <article className="character-info">
+      <article className='character-info'>
         {skeleton}
         {errorMessage}
         {spiner}
