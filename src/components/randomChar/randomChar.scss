@@ -1,14 +1,16 @@
 @import '../../style/variables.scss';
 
 .randomchar {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
 
-  @media (max-width: $mobile-width) {
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content min-content;
+  @media (max-width: $tablet-width) {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -17,6 +19,11 @@
   display: grid;
   grid-template-columns: 180px auto;
   column-gap: 30px;
+
+  @media (max-width: $tablet-width) {
+    width: 100%;
+    padding: 20px 20px;
+  }
 }
 
 .randomchar__img {
@@ -27,7 +34,7 @@
 
 .randomchar__info {
   display: grid;
-  grid-template-rows: minmax(29px, auto) 90px 38px;
+  grid-template-rows: minmax(29px, auto) 90px min-content;
   row-gap: 10px;
 }
 
@@ -44,8 +51,25 @@
 }
 
 .randomchar__links {
-  a:nth-child(1) {
-      margin-right: 30px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  a {
+    margin: 5px 8px;
+  }
+
+  @media (max-width: $tablet-width) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a:nth-child(1) {
+      margin-right: 0;
+  }
   }
 }
 
@@ -53,12 +77,18 @@
   display: grid;
   grid-template-rows: repeat(3, min-content);
   grid-row-gap: 20px;
+  height: 100%;
   padding: 40px 35px;
   background-color: $dark;
   position: relative;
   background-image: url('../../resources/img/mjolnir.png');
   background-repeat: no-repeat;
   background-position: bottom 30px right -35px;
+
+  @media (max-width: $tablet-width) {
+    width: 100%;
+    padding: 20px 20px;
+  }
 }
 
 .randomchar__title {
@@ -67,8 +97,9 @@
   line-height: 32px;
   letter-spacing: -0.045em;
   color: #FFFFFF;
+
   &:nth-child(2) {
-      margin-top: 33px;
+    margin-top: 33px;
   }
 }
 
