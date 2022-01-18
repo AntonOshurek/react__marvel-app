@@ -9,7 +9,7 @@ import './randomChar.scss';
 const RandomChar = () => {
 
   const [character, setCharacter] = useState(null);
-  const {loading, error, getCharacter} = useMarvelService();
+  const {loading, error, getCharacter, clearError} = useMarvelService();
 
   useEffect(() => {
     updateChar();
@@ -27,7 +27,7 @@ const RandomChar = () => {
   const updateChar = () => {
     const minValue = 1011000;
     const maxValue = 1011400;
-
+    clearError();
     const id = Math.floor(Math.random() * (maxValue - minValue) + minValue);
       getCharacter(id)
         .then(onCharacterLoaded)
