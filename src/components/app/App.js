@@ -21,14 +21,14 @@ const App = () => {
         <ErrorBoundary>
           <RandomChar/>
         </ErrorBoundary>
-        <div className="characters-content">
+        {/* <div className="characters-content">
           <ErrorBoundary>
             <CharList onCharacterSelected={onCharacterSelected}/>
           </ErrorBoundary>
           <ErrorBoundary>
             <CharInfo charId={selectedCharacter}/>
           </ErrorBoundary>
-        </div>
+        </div> */}
       </main>
     </div>
   )
