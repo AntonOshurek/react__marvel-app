@@ -12,48 +12,34 @@ const CharList = (props) => {
   const startCharactersItemsOffset = 210;
 
   const [charList, setCharList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [newItemLoading, setNewItemLoading] = useState(false);
   const [offset, setOffset] = useState(startCharactersItemsOffset);
   const [charEnded, setCharEnded] = useState(false);
 
-  const marvelService = useMarvelService();
+  const {loading, error, getAllCharacters} = useMarvelService();
 
   useEffect(() => {
-    onRequest();
+    onRequest(offset, true);
   }, []);
 
-  const onRequest = (offset) => {
-    onCharListLoading();
-    marvelService.getAllCharacters(offset)
+  const onRequest = (offset, initial) => {
+    initial ? setNewItemLoading(false) : setNewItemLoading(true)
+    getAllCharacters(offset)
       .then(onCharListLoaded)
-      .catch(onError)
-  }
-
-  const onCharListLoading = () => {
-    setNewItemLoading(true);
   }
 
   const nextCharactersOffset = 9;
 
   const onCharListLoaded = (newCharList) => {
-
     let ended = false;
     if(newCharList.length < 9) {
       ended = true;
     }
 
     setCharList(charList => [...charList, ...newCharList]);
-    setLoading(loading => false);
     setNewItemLoading(newItemLoading => false);
     setOffset(offset => offset + nextCharactersOffset);
     setCharEnded(charEnded => ended);
-  }
-
-  const onError = () => {
-    setError(true);
-    setLoading(loading => false);
   }
 
   const itemRefs = useRef([]);
@@ -101,15 +87,14 @@ const CharList = (props) => {
   const items = renderItems(charList);
 
   const errorMessage = error ? <ErrorMessage/> : null;
-  const spinner = loading ? <Spinner/> : null;
-  const content = !(loading || error) ? items : null;
+  const spinner = loading && !newItemLoading ? <Spinner/> : null;
 
   return (
     <section className="characters">
       <h2 className="visually-hidden">Characters list!</h2>
       {errorMessage}
       {spinner}
-      {content}
+      {items}
       <button className="characters__load-button button button__main" type="button"
         disabled={newItemLoading}
         style={{'display': charEnded ? 'none' : 'block'}}
