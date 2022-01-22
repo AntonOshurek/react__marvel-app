@@ -5,6 +5,7 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
+import ComicsList from "../comicsList/ComicsList";
 
 const App = () => {
 
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <div className="app">
       <AppHeader/>
-      <main className="main">
+      {/* <main className="main">
         <ErrorBoundary>
           <RandomChar/>
         </ErrorBoundary>
@@ -29,7 +30,8 @@ const App = () => {
             <CharInfo charId={selectedCharacter}/>
           </ErrorBoundary>
         </div>
-      </main>
+      </main> */}
+      <ComicsList/>
     </div>
   )
 }
