@@ -1,20 +1,9 @@
-import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import AppHeader from "../appHeader/AppHeader";
-import RandomChar from "../randomChar/RandomChar";
-import CharList from "../charList/CharList";
-import CharInfo from "../charInfo/CharInfo";
-import ErrorBoundary from "../errorBoundary/ErrorBoundary";
-import ComicsList from "../comicsList/ComicsList";
+import {MainPage, ComicsPage} from "../pages";
 
 const App = () => {
-
-  const [selectedCharacter, setChar] = useState(null);
-
-  const onCharacterSelected = (id) => {
-    setChar(id);
-  }
 
   return (
     <Router>
@@ -24,21 +13,11 @@ const App = () => {
           <Switch>
 
             <Route exact path="/">
-              <ErrorBoundary>
-                <RandomChar/>
-              </ErrorBoundary>
-              <div className="characters-content">
-                <ErrorBoundary>
-                  <CharList onCharacterSelected={onCharacterSelected}/>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                  <CharInfo charId={selectedCharacter}/>
-                </ErrorBoundary>
-              </div>
+              <MainPage/>
             </Route>
 
             <Route exact path="/comics">
-              <ComicsList/>
+              <ComicsPage/>
             </Route>
 
           </Switch>
