@@ -57,5 +57,6 @@
   &--active {
     color: $main-color;
     border-bottom: 2px solid #000;
+    pointer-events: none;
   }
 }
