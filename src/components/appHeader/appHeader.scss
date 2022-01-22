@@ -53,4 +53,9 @@
   &:focus {
     color: $main-color;
   }
+
+  &--active {
+    color: $main-color;
+    border-bottom: 2px solid #000;
+  }
 }
