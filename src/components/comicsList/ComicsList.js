@@ -4,62 +4,62 @@ import xMen from '../../resources/img/x-men.png';
 
 const ComicsList = () => {
   return (
-    <div className="comics__list">
-      <ul className="comics__grid">
+    <div className="comics">
+      <ul className="comics__list">
         <li className="comics__item">
-          <a href="#">
-            <img src={uw} alt="ultimate war" className="comics__item-img"/>
-            <div className="comics__item-name">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
-            <div className="comics__item-price">9.99$</div>
+          <a className='comics__link' href="#">
+            <img className='comics__img' src={uw} alt="ultimate war"/>
+            <div className="comics__title">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
+            <div className="comics__price">9.99$</div>
           </a>
         </li>
         <li className="comics__item">
           <a href="#">
-            <img src={xMen} alt="x-men" className="comics__item-img"/>
-            <div className="comics__item-name">X-Men: Days of Future Past</div>
-            <div className="comics__item-price">NOT AVAILABLE</div>
+            <img className='comics__img' src={xMen} alt="x-men"/>
+            <div className="comics__title">X-Men: Days of Future Past</div>
+            <div className="comics__price">NOT AVAILABLE</div>
           </a>
         </li>
         <li className="comics__item">
           <a href="#">
-            <img src={uw} alt="ultimate war" className="comics__item-img"/>
-            <div className="comics__item-name">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
-            <div className="comics__item-price">9.99$</div>
+            <img className='comics__img' src={uw} alt="ultimate war"/>
+            <div className="comics__title">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
+            <div className="comics__price">9.99$</div>
           </a>
         </li>
         <li className="comics__item">
           <a href="#">
-            <img src={xMen} alt="x-men" className="comics__item-img"/>
-            <div className="comics__item-name">X-Men: Days of Future Past</div>
-            <div className="comics__item-price">NOT AVAILABLE</div>
+            <img className='comics__img' src={xMen} alt="x-men"/>
+            <div className="comics__title">X-Men: Days of Future Past</div>
+            <div className="comics__price">NOT AVAILABLE</div>
           </a>
         </li>
         <li className="comics__item">
           <a href="#">
-            <img src={uw} alt="ultimate war" className="comics__item-img"/>
-            <div className="comics__item-name">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
-            <div className="comics__item-price">9.99$</div>
+            <img className='comics__img' src={uw} alt="ultimate war"/>
+            <div className="comics__title">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
+            <div className="comics__price">9.99$</div>
           </a>
         </li>
         <li className="comics__item">
           <a href="#">
-            <img src={xMen} alt="x-men" className="comics__item-img"/>
-            <div className="comics__item-name">X-Men: Days of Future Past</div>
-            <div className="comics__item-price">NOT AVAILABLE</div>
+            <img className='comics__img' src={xMen} alt="x-men"/>
+            <div className="comics__title">X-Men: Days of Future Past</div>
+            <div className="comics__price">NOT AVAILABLE</div>
           </a>
         </li>
         <li className="comics__item">
           <a href="#">
-            <img src={uw} alt="ultimate war" className="comics__item-img"/>
-            <div className="comics__item-name">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
-            <div className="comics__item-price">9.99$</div>
+            <img className='comics__img' src={uw} alt="ultimate war"/>
+            <div className="comics__title">ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</div>
+            <div className="comics__price">9.99$</div>
           </a>
         </li>
         <li className="comics__item">
           <a href="#">
-            <img src={xMen} alt="x-men" className="comics__item-img"/>
-            <div className="comics__item-name">X-Men: Days of Future Past</div>
-            <div className="comics__item-price">NOT AVAILABLE</div>
+            <img className='comics__img' src={xMen} alt="x-men"/>
+            <div className="comics__title">X-Men: Days of Future Past</div>
+            <div className="comics__price">NOT AVAILABLE</div>
           </a>
         </li>
       </ul>
