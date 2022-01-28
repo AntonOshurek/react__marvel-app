@@ -9,9 +9,7 @@ import Skeleton from '../skeleton/Skeleton';
 import './charInfo.scss';
 
 const CharInfo = (props) => {
-
   const [character, setCharacter] = useState(null);
-
   const {error, loading, getCharacter, clearError} = useMarvelService();
 
   useEffect(() => {

@@ -29,11 +29,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-
-  @media (max-width: $tablet-width) {
-    max-height: 100%;
-    overflow: auto;
-  }
 }
 
 .characters__item {
@@ -41,7 +36,7 @@
   grid-template-rows: 1fr min-content;
   grid-row-gap: 20px;
 
-  max-width: 200px;
+  width: 200px;
   padding: 0 0 40px 0;
   background-color: $dark;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, .25);

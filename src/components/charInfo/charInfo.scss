@@ -1,24 +1,22 @@
 @import '../../style/variables.scss';
 
 .character-info {
+  min-width: 400px;
+  min-height: 500px;
+  z-index: 1;
+
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, min-content);
   grid-row-gap: 10px;
-  padding: 25px;
+  padding: 20px;
+
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
-  min-width: 400px;
-  z-index: 5;
   background-color: #fff;
 
   @media (max-width: $tablet-width) {
     width: 100%;
-    max-width: 100%;
-    position: static;
-  }
-
-  .skeleton {
-    margin-top: 30px;
+    min-height: 300px;
   }
 }
 
