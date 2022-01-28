@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import useMarvelService from '../../services/MarvelService';
@@ -9,9 +9,8 @@ import Skeleton from '../skeleton/Skeleton';
 import './charInfo.scss';
 
 const CharInfo = (props) => {
-
   const [character, setCharacter] = useState(null);
-
+  const [classes, setClasses] = useState('character-info');
   const {error, loading, getCharacter, clearError} = useMarvelService();
 
   useEffect(() => {
@@ -32,13 +31,28 @@ const CharInfo = (props) => {
     setCharacter(character);
   }
 
+  const charRef = useRef();
+
+  const scrollHandler = () => {
+    const rect = charRef.current.getBoundingClientRect();
+    const elemTop = rect.top;
+
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler, true);
+    return () => {
+      window.removeEventListener("scroll", scrollHandler, true);
+    };
+  }, []);
+
   const skeleton = character || loading || error ? null : <Skeleton/>;
   const errorMessage = error ? <ErrorMessage/> : null;
   const spiner = loading ? <Spinner/> : null;
   const content = !(loading || error || !character) ? <View character={character}/> : null;
 
   return (
-    <article className='character-info'>
+    <article className={classes} ref={charRef}>
       {skeleton}
       {errorMessage}
       {spiner}

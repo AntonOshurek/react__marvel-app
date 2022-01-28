@@ -1,27 +1,26 @@
 @import '../../style/variables.scss';
 
 .character-info {
+  min-width: 400px;
+  min-height: 500px;
+  z-index: 1;
+
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, min-content);
   grid-row-gap: 10px;
-  padding: 25px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
-  width: 400px;
-  //position: relative;
-  z-index: 5;
-  background-color: #fff;
+  padding: 20px;
 
-  // position: fixed;
-  right: 25px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
 
   @media (max-width: $tablet-width) {
     width: 100%;
-    position: static;
+    min-height: 300px;
   }
 
-  .skeleton {
-    margin-top: 30px;
+  &--scroll {
+    position: fixed;
   }
 }
 
@@ -76,10 +75,10 @@
 }
 
 .char {
-    &-select {  // ?????????????????????
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 24px;
-        text-align: center;
-    }
+  &-select {  // ?????????????????????
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+  }
 }
