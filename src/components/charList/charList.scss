@@ -6,6 +6,7 @@
   grid-template-columns: 1fr min-content;
   column-gap: 25px;
   align-items: start;
+  position: relative;
 
   @media (max-width: $tablet-width) {
     display: flex;
