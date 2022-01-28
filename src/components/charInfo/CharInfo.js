@@ -10,7 +10,6 @@ import './charInfo.scss';
 
 const CharInfo = (props) => {
   const [character, setCharacter] = useState(null);
-  const [classes, setClasses] = useState('character-info');
   const {error, loading, getCharacter, clearError} = useMarvelService();
 
   useEffect(() => {
@@ -31,28 +30,13 @@ const CharInfo = (props) => {
     setCharacter(character);
   }
 
-  const charRef = useRef();
-
-  const scrollHandler = () => {
-    const rect = charRef.current.getBoundingClientRect();
-    const elemTop = rect.top;
-
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandler, true);
-    return () => {
-      window.removeEventListener("scroll", scrollHandler, true);
-    };
-  }, []);
-
   const skeleton = character || loading || error ? null : <Skeleton/>;
   const errorMessage = error ? <ErrorMessage/> : null;
   const spiner = loading ? <Spinner/> : null;
   const content = !(loading || error || !character) ? <View character={character}/> : null;
 
   return (
-    <article className={classes} ref={charRef}>
+    <article className='character-info'>
       {skeleton}
       {errorMessage}
       {spiner}
