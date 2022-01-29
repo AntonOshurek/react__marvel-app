@@ -1,6 +1,13 @@
-.comics {
-  margin-top: 45px;
+@import '../../style/variables.scss';
 
+.comics {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-row-gap: 40px;
+}
+
+.comics__wrap {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content;
@@ -35,6 +42,7 @@
   width: 225px;
   height: 345px;
   display: flex;
+  background-color: $standart-white;
 
   object-fit: contain;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
