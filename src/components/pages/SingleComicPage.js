@@ -33,13 +33,13 @@ const SingleComicPage = () => {
   const content = !(loading || error || !comic) ? <View comic={comic}/> : null;
 
   return (
-      <article className='single-comic'>
-        <h2 className='visually-hidden'>comic - {comic ? comic.title : null}</h2>
-        <AppBanner/>
-        {errorMessage}
-        {spiner}
-        {content}
-      </article>
+    <article className='single-comic'>
+      <h2 className='visually-hidden'>comic - {comic ? comic.title : null}</h2>
+      <AppBanner/>
+      {errorMessage}
+      {spiner}
+      {content}
+    </article>
   )
 }
 

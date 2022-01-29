@@ -39,13 +39,15 @@ const ComicsList = () => {
   function renderItems (arr) {
     const items = arr.map((item, i) => {
       return (
-      <li className="comics__item" key={i}>
-        <Link className='comics__link' to={`/comics/${item.id}`}>
-          <img className='comics__img' src={item.thumbnail} alt={item.title}/>
-          <div className="comics__title">{item.title}</div>
-          <div className="comics__price">{item.price}</div>
-        </Link>
-      </li>
+        <li className="comics__item" key={i}>
+          <Link className='comics__link' to={`/comics/${item.id}`}>
+            <img className='comics__img'
+              width={'250'} height={'400'}
+              src={item.thumbnail} alt={item.title}/>
+            <div className="comics__title">{item.title}</div>
+            <div className="comics__price">{item.price}</div>
+          </Link>
+        </li>
       )
     })
 
@@ -69,7 +71,7 @@ const ComicsList = () => {
         <button
           disabled={newItemLoading}
           style={{'display' : comicsEnded ? 'none' : 'block'}}
-          className="button button__main button__long"
+          className="comics__button button button__main button__long"
           onClick={() => onRequest(offset)}>
           <div className="inner">load more</div>
         </button>
