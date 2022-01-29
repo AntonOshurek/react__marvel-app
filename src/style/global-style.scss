@@ -48,6 +48,7 @@ input::-webkit-inner-spin-button {
 
 .app {
   max-width: $desktope-width;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 50px 20px;
 
@@ -61,8 +62,16 @@ input::-webkit-inner-spin-button {
 }
 
 .main {
-  margin-top: 50px;
+  padding: 50px 0;
   position: relative;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
 .pulse {

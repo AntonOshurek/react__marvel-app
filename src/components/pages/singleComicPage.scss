@@ -1,39 +1,89 @@
 @import '../../style/variables.scss';
 
 .single-comic {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: 293px 550px auto;
-    column-gap: 50px;
-    align-items: start;
-    &__img {
-        width: 293px;
-        height: 450px;
-    }
-    &__name {
-        font-weight: bold;
-        font-size: 22px;
-        line-height: 29px;
-    }
-    &__descr {
-        font-size: 18px;
-        line-height: 24px;
-        margin-top: 25px;
-    }
-    &__price {
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
-        color: $main-color;
-        margin-top: 25px;
-    }
-    &__back {
-        justify-self: end;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 24px;
-        &:hover {
-            color: $main-color;
-        }
-    }
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content;
+  grid-row-gap: 50px;
+}
+
+.single-comic__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-rows: 1fr min-content;
+  grid-row-gap: 30px;
+  column-gap: 10px;
+  align-items: start;
+
+  @media (max-width: $mobile-width) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-row-gap: 15px;
+  }
+}
+
+.single-comic__info {
+  height: 100%;
+  padding: 40px 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 25px;
+
+  background-color: rgba($color: #fff, $alpha: .7);
+
+  @media (max-width: $mobile-width) {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.single-comic__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  @media (max-width: $mobile-width) {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.single-comic__name {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 29px;
+}
+
+.single-comic__descr {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.single-comic__price {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  color: $main-color;
+}
+
+.single-comic__back {
+  justify-self: end;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: underline;
+  justify-self: start;
+
+  &:hover,
+  &:focus {
+    color: $main-color;
+  }
+
+  @media (max-width: $mobile-width) {
+    justify-self: center;
+  }
 }

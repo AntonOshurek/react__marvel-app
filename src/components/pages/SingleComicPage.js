@@ -33,32 +33,33 @@ const SingleComicPage = () => {
   const content = !(loading || error || !comic) ? <View comic={comic}/> : null;
 
   return (
-    <>
-      <AppBanner/>
-      {errorMessage}
-      {spiner}
-      {content}
-    </>
+      <article className='single-comic'>
+        <h2 className='visually-hidden'>comic - {comic ? comic.title : null}</h2>
+        <AppBanner/>
+        {errorMessage}
+        {spiner}
+        {content}
+      </article>
   )
 }
-
-
 
 const View = ({comic}) => {
   const {title, description, pageCount, thumbnail, language, price} = comic;
 
   return(
-    <div className="single-comic">
-    <img src={thumbnail} alt={title} className="single-comic__img"/>
-    <div className="single-comic__info">
-      <h2 className="single-comic__name">{title}</h2>
-      <p className="single-comic__descr">{description}</p>
-      <p className="single-comic__descr">{pageCount}</p>
-      <p className="single-comic__descr">{language}</p>
-      <div className="single-comic__price">{price}</div>
+    <div className="single-comic__wrap">
+      <img className="single-comic__img"
+        width={'250'} height={'250'}
+        src={thumbnail} alt={title} />
+      <div className="single-comic__info">
+        <h3 className="single-comic__name">{title}</h3>
+        <p className="single-comic__descr">{description}</p>
+        <p className="single-comic__descr">{pageCount}</p>
+        <p className="single-comic__descr">{language}</p>
+        <div className="single-comic__price">{price}</div>
+      </div>
+      <Link className="single-comic__back" to="/comics">Back to all</Link>
     </div>
-    <Link className="single-comic__back" to="/comics">Back to all</Link>
-  </div>
   );
 }
 
