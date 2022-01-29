@@ -54,6 +54,12 @@ const View = ({character}) => {
     imgStyle = {'objectFit' : 'contain'};
   }
 
+
+  const [showComicsList, setShowComicsList] = useState(false);
+  const showComicList = () => {
+    setShowComicsList(!showComicsList);
+  }
+
   return(
     <>
       <div className="character-info__basics">
@@ -74,8 +80,8 @@ const View = ({character}) => {
       <p className="character-info__description">
        {description}
       </p>
-      <p className="character-info__comics">Comics:</p>
-      <ul className="character-info__comics-list">
+      <p className='character-info__comics'>Comics:</p>
+      <ul className={showComicsList ? 'character-info__comics-list character-info__comics-list--show-comics' : 'character-info__comics-list'}>
         {comics.length > 0 ? null : 'There is no comics with this character'}
         {
           comics.map((item, id) => {
@@ -89,6 +95,9 @@ const View = ({character}) => {
           })
         }
       </ul>
+      <button className='character-info__show-comics-btn button button__secondary' onClick={showComicList}>
+        <div className="inner">show more</div>
+      </button>
     </>
   )
 }

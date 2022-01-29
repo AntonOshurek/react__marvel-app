@@ -7,7 +7,7 @@
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, min-content);
+  grid-template-rows: repeat(5, min-content);
   grid-row-gap: 10px;
   padding: 20px;
 
@@ -15,9 +15,10 @@
   background-color: #fff;
 
   position: sticky;
-  top: 10px;
+  top: 0;
 
   @media (max-width: $tablet-width) {
+    min-width: auto;
     width: 100%;
     min-height: 300px;
   }
@@ -64,6 +65,25 @@
 .character-info__comics-list {
   display: grid;
   grid-row-gap: 3px;
+
+  @media (max-width: $tablet-width) {
+    overflow-y: hidden;
+    height: 43px;
+  }
+
+  &--show-comics {
+    height: auto;
+    overflow-y: auto;
+  }
+}
+
+.character-info__show-comics-btn {
+  display: none;
+
+  @media (max-width: $tablet-width) {
+    display: block;
+    justify-self: center;
+  }
 }
 
 .character-info__comics-item {
