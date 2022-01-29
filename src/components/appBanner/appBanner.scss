@@ -1,20 +1,44 @@
 @import '../../style/variables.scss';
 
-.app {
-    &__banner {
-        width: 100%;
-        background-color: $dark;
-        height: 100px;
-        padding: 0 25px 0 45px;
-        display: grid;
-        grid-template-columns: 152px auto 133px;
-        &-text {
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 32px;
-            color: #FFFFFF;
-            padding-left: 83px;
-            padding-top: 18px;
-        }
-    }
+.banner {
+  width: 100%;
+  background-color: $dark;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px 0 45px;
+
+
+  @media (max-width: $tablet-width) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+.banner__img {
+  height: 100px;
+  min-width: 120px;
+
+  @media (max-width: $tablet-width) {
+    justify-self: center;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.banner__text {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  color: #FFFFFF;
+
+  @media (max-width: $tablet-width) {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    text-align: center;
+  }
 }
