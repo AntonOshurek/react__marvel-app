@@ -6,7 +6,7 @@ const AppHeader = () => {
   return (
     <header className="header">
       <h1 className="header-title">
-        <Link className="header-title__link" to='/'>
+        <Link className="header-title__link" to='/react__marvel-app'>
           <span className="header-title__custom-text">Marvel</span> information portal
         </Link>
       </h1>
@@ -15,7 +15,7 @@ const AppHeader = () => {
           <li className="menu__item">
             <NavLink end
               className={({ isActive }) => "menu__link " + (isActive ? " menu__link--active" : "")}
-              to='/'>Characters
+              to='/react__marvel-app'>Characters
             </NavLink>
           </li>
           <span aria-hidden="true">/</span>
