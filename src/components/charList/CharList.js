@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import Spinner from '../spiner/spiner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -58,7 +59,8 @@ const CharList = (props) => {
       }
 
       return (
-        <li className="characters__item"
+        <CSSTransition key={item.id} timeout={500} classNames="characters__item">
+          <li className="characters__item"
             key={item.id}
             onClick={() => {
               props.onCharacterSelected(item.id)
@@ -75,11 +77,14 @@ const CharList = (props) => {
           <img className="characters__image" width="200" height="200" src={item.thumbnails} alt={item.name} style={imgStyle}/>
           <h3 className="characters__name">{item.name}</h3>
         </li>
+        </CSSTransition>
       )
     });
     return (
       <ul className="characters__list">
-        {items}
+        <TransitionGroup component={null}>
+          {items}
+        </TransitionGroup>
       </ul>
     )
   }
