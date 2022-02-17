@@ -4,6 +4,7 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
+import CharSearchForm from "../charSearchForm/CharSearchForm";
 
 const MainPage = () => {
 
@@ -24,6 +25,9 @@ const MainPage = () => {
         </ErrorBoundary>
         <ErrorBoundary>
           <CharInfo charId={selectedCharacter}/>
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <CharSearchForm/>
         </ErrorBoundary>
       </div>
     </>
