@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
-import './charSearchForm.scss';
+import './CharSearchForm.scss';
 
 const CharSearchForm = () => {
   const [char, setChar] = useState(null);
