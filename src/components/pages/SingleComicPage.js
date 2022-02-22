@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 // import { useState, useEffect } from 'react';
 
 // import useMarvelService from '../../services/MarvelService';
@@ -45,19 +46,25 @@ const SingleComicPage = ({data}) => {
   const {title, description, pageCount, thumbnail, language, price} = data;
 
   return(
-    <div className="single-comic__wrap">
-      <img className="single-comic__img"
-        width={'250'} height={'250'}
-        src={thumbnail} alt={title} />
-      <div className="single-comic__info">
-        <h3 className="single-comic__name">{title}</h3>
-        <p className="single-comic__descr">{description}</p>
-        <p className="single-comic__descr">{pageCount}</p>
-        <p className="single-comic__descr">{language}</p>
-        <div className="single-comic__price">{price}</div>
+    <>
+      <Helmet>
+        <meta name='comics' content={`${title} comics book`}/>
+        <title>{title}</title>
+      </Helmet>
+      <div className="single-comic__wrap">
+        <img className="single-comic__img"
+          width={'250'} height={'250'}
+          src={thumbnail} alt={title} />
+        <div className="single-comic__info">
+          <h3 className="single-comic__name">{title}</h3>
+          <p className="single-comic__descr">{description}</p>
+          <p className="single-comic__descr">{pageCount}</p>
+          <p className="single-comic__descr">{language}</p>
+          <div className="single-comic__price">{price}</div>
+        </div>
+        <Link className="single-comic__back" to="/comics">Back to all</Link>
       </div>
-      <Link className="single-comic__back" to="/comics">Back to all</Link>
-    </div>
+    </>
   );
 }
 

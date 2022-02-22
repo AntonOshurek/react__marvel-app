@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spiner/spiner';
@@ -67,6 +68,10 @@ const ComicsList = () => {
 
   return (
     <article className='comics'>
+      <Helmet>
+        <meta name='comics' content='Page with list of our comics'/>
+        <title>Comics page</title>
+      </Helmet>
       <h2 className='visually-hidden'>Comics list</h2>
       <AppBanner/>
       <div className="comics__wrap">
